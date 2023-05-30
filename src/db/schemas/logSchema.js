@@ -2,8 +2,14 @@ import { Schema } from "mongoose";
 
 const LogSchema = new Schema(
   {
-    id: String,
-    password: String,
+    diary: { type: String, required: true },
+    color: { type: String, required: true },
+    score: { type: Number, required: true },
+    date: {
+      type: Date,
+      default: Date.now,
+    },
+    author: { type: String, required: true },
   },
   { timestamps: true },
 );
