@@ -7,6 +7,7 @@ const LogSchema = new Schema(
     score: { type: Number, required: true },
     date: {
       type: Date,
+      required: true,
       default: Date.now,
     },
     author: { type: String, required: true },
