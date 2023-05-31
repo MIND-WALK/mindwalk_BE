@@ -15,7 +15,7 @@ userRouter.post("/join", async (req, res, next) => {
 userRouter.post("/login", async (req, res, next) => {
   try {
     const result = await userService.getUserToken(req.body);
-    res.status(201).json(result);
+    res.status(201).json({ ...result, id: req.body.id });
   } catch (err) {
     next(err);
   }
