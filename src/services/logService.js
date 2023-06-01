@@ -20,7 +20,7 @@ class LogService {
   async findLog(logId) {
     const foundLog = await this.logModel.findOne(logId);
 
-    if (!foundLog) throw new Error("해당 주문을 찾을 수 없습니다.");
+    if (!foundLog) throw new Error("해당 게시글을 찾을 수 없습니다.");
 
     return foundLog;
   }
