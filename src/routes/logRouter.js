@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { logService } from "../services/index";
+import { logService } from "../services/index.js";
 
 const logRouter = Router();
 

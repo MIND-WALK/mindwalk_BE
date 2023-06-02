@@ -1,2 +1,2 @@
-export { default as UserModel } from "./models/userModel";
-export { default as LogModel } from "./models/logModel";
+export { default as UserModel } from "./models/userModel.js";
+export { default as LogModel } from "./models/logModel.js";

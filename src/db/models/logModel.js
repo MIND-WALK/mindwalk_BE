@@ -1,5 +1,5 @@
 import { model } from "mongoose";
-import LogSchema from "../schemas/logSchema";
+import LogSchema from "../schemas/logSchema.js";
 
 class LogModel {
   Log = model("Log", LogSchema);
