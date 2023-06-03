@@ -1,37 +1,21 @@
 import "dotenv/config";
-import Koa from 'koa';
-import Router from 'koa-router';
-import bodyParser from 'koa-bodyparser';
-import mongoose from 'mongoose';
-// import app from "./src/app";
-import api from './src/app';
-import { logRouter, userRouter } from "./src/routes/index.js";
+import mongoose from "mongoose";
+import app from "./src/app";
 
-const { PORT, MONGO_URI } = process.env;
+const PORT = process.env.SERVER_PORT || 5000;
+const DB_URL = process.env.MONGODB_URL || "MongoDB 서버 주소가 설정되지 않았습니다.";
+const uri =
+    "mongodb+srv://mindwalk:mindwalk2023@cluster0.xcurfm0.mongodb.net/?retryWrites=true&w=majority";
 
-mongoose
-    .connect(MONGO_URI, { useUnifiedTopology: true, useNewUrlParser: true })
-    .then(() => {
-        console.log('Connected to MongoDB');
-    })
-    .catch(e => {
-        console.error(e);
-    });
+mongoose.connect(uri);
+const db = mongoose.connection;
 
-const app = new Koa();
-const router = new Router();
+db.on("connected", async() => {
+    console.log(`정상적으로 MongoDB 서버에 연결되었습니다.  ${uri}`);
+});
 
-// 라우터 설정
-router.use('/api',  userRouter);
-router.use('/api',  logRouter); // api 라우트 적용
+db.on("error", error => console.error(`\nMongoDB 연결에 실패하였습니다...\n${DB_URL}\n${error}`));
 
-// 라우터 적용 전에 bodyParser 적용
-app.use(bodyParser());
-
-// app 인스턴스에 라우터 적용
-app.use(router.routes()).use(router.allowedMethods());
-
-const port = PORT || 4000;
-app.listen(port, () => {
-    console.log('Listening to port %d', port);
+app.listen(PORT, () => {
+    console.log(`정상적으로 서버를 시작하였습니다.  http://localhost:${PORT}`);
 });
