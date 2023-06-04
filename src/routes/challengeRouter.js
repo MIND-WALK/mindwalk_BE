@@ -5,7 +5,6 @@ const challengeRouter = Router();
 
 challengeRouter.post("/user/challenge/:userId/:date", async(req, res, next) => {
     try {
-        res.setHeader("Access-Control-Allow-origin", "*");
         const { userId, date } = req.params;
 
         const { name, location, check } = req.body;
@@ -25,7 +24,6 @@ challengeRouter.post("/user/challenge/:userId/:date", async(req, res, next) => {
 
 challengeRouter.get("/user/trip/:userId", async(req, res, next) => {
     try {
-        res.setHeader("Access-Control-Allow-origin", "*");
         const { userId } = req.params;
 
         const challenges = await challengeService.findChallengesByUserId(userId);

@@ -4,8 +4,8 @@ import { logService } from "../services/index.js";
 const logRouter = Router();
 
 logRouter.post("/log/:userId", async(req, res, next) => {
+    // res.header("Access-Control-Allow-origin", "*");
     try {
-        res.header("Access-Control-Allow-origin", "*");
         const { userId } = req.params;
 
         await logService.createLog({...req.body, author: userId });
@@ -16,8 +16,8 @@ logRouter.post("/log/:userId", async(req, res, next) => {
 });
 
 logRouter.get("/log/all/:userId", async(req, res, next) => {
+    // res.header("Access-Control-Allow-origin", "*");
     try {
-        res.setHeader("Access-Control-Allow-origin", "*");
         const { userId } = req.params;
 
         const logs = await logService.findLogsByUserId(userId);
@@ -29,8 +29,8 @@ logRouter.get("/log/all/:userId", async(req, res, next) => {
 });
 
 logRouter.get("/log/:logId", async(req, res, next) => {
+    // res.header("Access-Control-Allow-origin", "*");
     try {
-        res.setHeader("Access-Control-Allow-origin", "*");
         const { logId } = req.params;
 
         const log = await logService.findLog(logId);

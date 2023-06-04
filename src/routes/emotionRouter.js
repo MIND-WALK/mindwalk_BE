@@ -4,6 +4,7 @@ import { emotionService } from "../services/index.js";
 const emotionRouter = Router();
 
 emotionRouter.post("/emotion/:userId", async(req, res, next) => {
+    // res.header("Access-Control-Allow-origin", "*")
     try {
         const { userId } = req.params;
 
@@ -15,6 +16,7 @@ emotionRouter.post("/emotion/:userId", async(req, res, next) => {
 });
 
 emotionRouter.get("/emotion/all/:userId", async(req, res, next) => {
+    // res.header("Access-Control-Allow-origin", "*");
     try {
         const { userId } = req.params;
 

@@ -8,3 +8,5 @@ export { default as emotionRouter }
 from "./emotionRouter.js";
 export { default as routeRouter }
 from "./routeRouter.js";
+export { default as tripRouter }
+from "./tripRouter.js";

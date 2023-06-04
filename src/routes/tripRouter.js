@@ -1,14 +1,14 @@
 import { Router } from "express";
-import { TripService } from "../services/index.js";
+import { tripService } from "../services/index.js";
 
 const tripRouter = Router();
 
 tripRouter.get("/user/trip/all/:userId", async(req, res, next) => {
+    // res.header("Access-Control-Allow-origin", "*");
     try {
-        res.setHeader("Access-Control-Allow-origin", "*");
         const { userId } = req.params;
 
-        const trips = await TripService.findAllByUserId(userId);
+        const trips = await tripService.findAllByUserId(userId);
 
         res.status(200).send(trips);
     } catch (err) {
