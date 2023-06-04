@@ -1,5 +1,5 @@
 export { default as ChallengeModel }
-from "./models/challengeModel";
+from "./models/challengeModel.js";
 export { default as UserModel }
 from "./models/userModel.js";
 export { default as LogModel }

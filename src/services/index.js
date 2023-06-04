@@ -1,5 +1,5 @@
 export { default as challengeService }
-from "./challengeService";
+from "./challengeService.js";
 export { default as userService }
 from "./userService.js";
 export { default as logService }
