@@ -1,5 +1,5 @@
 import { model } from "mongoose";
-import RouteSchema from "../schemas/routeSchema";
+import RouteSchema from "../schemas/routeSchema.js";
 
 class RouteModel {
     Route = model("Route", RouteSchema);

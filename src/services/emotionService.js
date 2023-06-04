@@ -1,4 +1,4 @@
-import { EmotionModel } from "../db";
+import { EmotionModel } from "../db/index.js";
 
 class EmotionService {
     emotionModel = new EmotionModel();

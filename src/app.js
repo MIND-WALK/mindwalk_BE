@@ -1,6 +1,12 @@
 import express from "express";
 import bodyParser from "body-parser";
-import { logRouter, userRouter, emotionRouter, routeRouter, challengeRouter } from "./routes";
+import {
+    logRouter,
+    userRouter,
+    emotionRouter,
+    routeRouter,
+    challengeRouter,
+} from "./routes/index.js";
 
 const app = express();
 

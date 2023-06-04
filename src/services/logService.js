@@ -1,29 +1,29 @@
-import { LogModel } from "../db";
+import { LogModel } from "../db/index.js";
 
 class LogService {
-  logModel = new LogModel();
+    logModel = new LogModel();
 
-  async createLog(logInfo) {
-    const createdLog = await this.logModel.createLog(logInfo);
+    async createLog(logInfo) {
+        const createdLog = await this.logModel.createLog(logInfo);
 
-    return createdLog;
-  }
+        return createdLog;
+    }
 
-  async findLogsByUserId(userId) {
-    const foundLogArray = await this.logModel.findAllByUserId(userId);
+    async findLogsByUserId(userId) {
+        const foundLogArray = await this.logModel.findAllByUserId(userId);
 
-    if (foundLogArray.length < 1) return [];
+        if (foundLogArray.length < 1) return [];
 
-    return foundLogArray;
-  }
+        return foundLogArray;
+    }
 
-  async findLog(logId) {
-    const foundLog = await this.logModel.findOne(logId);
+    async findLog(logId) {
+        const foundLog = await this.logModel.findOne(logId);
 
-    if (!foundLog) throw new Error("해당 게시글을 찾을 수 없습니다.");
+        if (!foundLog) throw new Error("해당 게시글을 찾을 수 없습니다.");
 
-    return foundLog;
-  }
+        return foundLog;
+    }
 }
 
 const logService = new LogService();

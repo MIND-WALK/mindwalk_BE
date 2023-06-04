@@ -1,5 +1,5 @@
 import { model } from "mongoose";
-import EmotionSchema from "../schemas/emotionSchema";
+import EmotionSchema from "../schemas/emotionSchema.js";
 
 class EmotionModel {
     Emotion = model("Emotion", EmotionSchema);

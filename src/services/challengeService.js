@@ -1,29 +1,29 @@
-import { ChallengeModel } from "../db";
+import { ChallengeModel } from "../db/index.js";
 
 class LogService {
-  challengeModel = new ChallengeModel();
+    challengeModel = new ChallengeModel();
 
-  async createChallenge(challengeInfo) {
-    const createdChallenge = await this.challengeModel.create(challengeInfo);
+    async createChallenge(challengeInfo) {
+        const createdChallenge = await this.challengeModel.create(challengeInfo);
 
-    return createdChallenge;
-  }
+        return createdChallenge;
+    }
 
-  async findChallengesByUserId(userId) {
-    const foundChallengeArray = await this.challengeModel.findAllByUserId(userId);
+    async findChallengesByUserId(userId) {
+        const foundChallengeArray = await this.challengeModel.findAllByUserId(userId);
 
-    if (foundChallengeArray.length < 1) return [];
+        if (foundChallengeArray.length < 1) return [];
 
-    return foundChallengeArray;
-  }
+        return foundChallengeArray;
+    }
 
-  async findChallenge(challengeId) {
-    const foundChallenge = await this.challengeModel.findOne(challengeId);
+    async findChallenge(challengeId) {
+        const foundChallenge = await this.challengeModel.findOne(challengeId);
 
-    if (!foundChallenge) throw new Error("해당 게시글을 찾을 수 없습니다.");
+        if (!foundChallenge) throw new Error("해당 게시글을 찾을 수 없습니다.");
 
-    return foundChallenge;
-  }
+        return foundChallenge;
+    }
 }
 
 const logService = new LogService();

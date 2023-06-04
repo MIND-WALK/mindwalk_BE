@@ -1,18 +1,18 @@
-import { RouteModel } from "../db";
+import { RouteModel } from "../db/index.js";
 
 class RouteService {
     routeModel = new RouteModel();
 
     async createRoute(routeInfo) {
-        const createdLog = await this.routeModel.createRoute(routeInfo);
+        const createdRoute = await this.routeModel.createRoute(routeInfo);
 
-        return createdLog;
+        return createdRoute;
     }
 
     async findAllByCategory(categoryNum) {
         const foundRoutes = await this.routeModel.findAllByCategory(categoryNum);
 
-        if (foundLogArray.length < 1) return [];
+        if (foundRoutes.length < 1) return [];
 
         return foundRoutes;
     }
