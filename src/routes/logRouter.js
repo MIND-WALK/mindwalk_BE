@@ -5,7 +5,7 @@ const logRouter = Router();
 
 logRouter.post("/log/:userId", async(req, res, next) => {
     try {
-        res.setHeader("Access-Control-Allow-origin", "*");
+        res.header("Access-Control-Allow-origin", "*");
         const { userId } = req.params;
 
         await logService.createLog({...req.body, author: userId });
