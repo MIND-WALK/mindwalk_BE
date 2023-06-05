@@ -16,9 +16,9 @@ logRouter.post("/log/:userId", async (req, res, next) => {
 });
 
 logRouter.post("/log/update/:userId/:ms", async (req, res, next) => {
-  const newLog = await logService.updateLog(req.params.userId, req.params.ms, req.body);
+  await logService.updateLog(req.params.userId, req.params.ms, req.body);
 
-  res.status(201).send(newLog);
+  res.status(201).end();
 });
 
 logRouter.get("/log/all/:userId", async (req, res, next) => {
