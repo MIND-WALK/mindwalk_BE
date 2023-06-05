@@ -14,14 +14,14 @@ class LogModel {
     return logs;
   }
 
-  async findOne(logId) {
-    const log = await this.Log.findOne({ _id: logId });
+  async findOne(userId, ms) {
+    const log = await this.Log.findOne({ author: userId, date: ms });
 
     return log;
   }
 
-  async update(logId, update) {
-    const log = await this.Log.findByIdAndUpdate(logId, update, { new: true });
+  async update(userId, ms, update) {
+    const log = await this.Log.updateOne({ author: userId, date: ms }, update);
 
     return log;
   }
