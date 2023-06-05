@@ -6,9 +6,8 @@ const LogSchema = new Schema(
     color: { type: String, required: true },
     score: { type: Number, required: true },
     date: {
-      type: Date,
+      type: Number,
       required: true,
-      default: Date.now,
     },
     img: String,
     author: { type: String, required: true },
