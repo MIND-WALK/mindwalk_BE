@@ -1,29 +1,37 @@
 import { LogModel } from "../db/index.js";
 
 class LogService {
-    logModel = new LogModel();
+  logModel = new LogModel();
 
-    async createLog(logInfo) {
-        const createdLog = await this.logModel.createLog(logInfo);
+  async createLog(logInfo) {
+    const createdLog = await this.logModel.createLog(logInfo);
 
-        return createdLog;
-    }
+    return createdLog;
+  }
 
-    async findLogsByUserId(userId) {
-        const foundLogArray = await this.logModel.findAllByUserId(userId);
+  async updateLog(logId, update) {
+    const log = await this.logModel.findOne(logId);
 
-        if (foundLogArray.length < 1) return [];
+    if (!log) throw new Error("존재하지 않는 데이터입니다.");
 
-        return foundLogArray;
-    }
+    const updatedLog = await this.logModel.update(logId, update);
+  }
 
-    async findLog(logId) {
-        const foundLog = await this.logModel.findOne(logId);
+  async findLogsByUserId(userId) {
+    const foundLogArray = await this.logModel.findAllByUserId(userId);
 
-        if (!foundLog) throw new Error("해당 게시글을 찾을 수 없습니다.");
+    if (foundLogArray.length < 1) return [];
 
-        return foundLog;
-    }
+    return foundLogArray;
+  }
+
+  async findLog(logId) {
+    const foundLog = await this.logModel.findOne(logId);
+
+    if (!foundLog) throw new Error("해당 게시글을 찾을 수 없습니다.");
+
+    return foundLog;
+  }
 }
 
 const logService = new LogService();

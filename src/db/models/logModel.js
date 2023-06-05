@@ -19,6 +19,12 @@ class LogModel {
 
     return log;
   }
+
+  async update(logId, update) {
+    const log = await this.Log.findByIdAndUpdate(logId, update, { new: true });
+
+    return log;
+  }
 }
 
 export default LogModel;
