@@ -9,12 +9,10 @@ class LogService {
     return createdLog;
   }
 
-  async updateLog(logId, update) {
-    const log = await this.logModel.findOne(logId);
+  async updateLog(userId, ms, update) {
+    const updatedLog = await this.logModel.update(userId, ms, update);
 
-    if (!log) throw new Error("존재하지 않는 데이터입니다.");
-
-    const updatedLog = await this.logModel.update(logId, update);
+    return updatedLog;
   }
 
   async findLogsByUserId(userId) {

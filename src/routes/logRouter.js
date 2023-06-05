@@ -15,10 +15,10 @@ logRouter.post("/log/:userId", async (req, res, next) => {
   }
 });
 
-logRouter.put("/log/:logId", async (req, res, next) => {
-  const newLog = await logService.updateLog(req.params.logId, req.body);
+logRouter.post("/log/update/:userId/:ms", async (req, res, next) => {
+  const newLog = await logService.updateLog(req.params.userId, req.params.ms, req.body);
 
-  res.status(201).json(newLog);
+  res.status(201).send(newLog);
 });
 
 logRouter.get("/log/all/:userId", async (req, res, next) => {
