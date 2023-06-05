@@ -8,7 +8,8 @@ const NameSchema = new Schema(
 );
 const LocationSchema = new Schema(
   {
-    location: String,
+    lon: Number,
+    lat: Number,
   },
   { timestamps: true },
 );
