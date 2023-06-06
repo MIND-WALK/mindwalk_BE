@@ -3,17 +3,16 @@ import { tripService } from "../services/index.js";
 
 const tripRouter = Router();
 
-tripRouter.get("/user/trip/all/:userId", async(req, res, next) => {
-    // res.header("Access-Control-Allow-origin", "*");
-    try {
-        const { userId } = req.params;
+tripRouter.get("/user/trip/all/:userId", async (req, res, next) => {
+  try {
+    const { userId } = req.params;
 
-        const trips = await tripService.findAllByUserId(userId);
+    const trips = await tripService.findAllByUserId(userId);
 
-        res.status(200).send(trips);
-    } catch (err) {
-        next(err);
-    }
+    res.status(200).send(trips);
+  } catch (err) {
+    next(err);
+  }
 });
 
 export default tripRouter;

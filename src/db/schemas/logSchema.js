@@ -9,7 +9,7 @@ const LogSchema = new Schema(
       type: Number,
       required: true,
     },
-    img: String,
+    img: { type: Number, required: true },
     author: { type: String, required: true },
   },
   { timestamps: true },

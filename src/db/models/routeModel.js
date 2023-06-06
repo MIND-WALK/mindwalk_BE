@@ -2,17 +2,17 @@ import { model } from "mongoose";
 import RouteSchema from "../schemas/routeSchema.js";
 
 class RouteModel {
-    Route = model("Route", RouteSchema);
+  Route = model("Route", RouteSchema);
 
-    async createRoute(logInfo) {
-        await this.Route.create(logInfo);
-    }
+  async createRoute(logInfo) {
+    await this.Route.create(logInfo);
+  }
 
-    async findAllByCategory(categoryNum) {
-        const routes = await this.Route.find({ category: categoryNum });
+  async findAllByCategory(categoryNum) {
+    const routes = await this.Route.find({ emotion: categoryNum });
 
-        return routes;
-    }
+    return routes;
+  }
 }
 
 export default RouteModel;

@@ -1,15 +1,15 @@
 import { TripModel } from "../db/index.js";
 
 class TripService {
-    tripModel = new TripModel();
+  tripModel = new TripModel();
 
-    async findAllByUserId(userId) {
-        const foundTrips = await this.tripModel.findAllByUserId(userId);
+  async findAllByUserId(userId) {
+    const foundTrips = await this.tripModel.findAllByUserId(userId);
 
-        if (foundTrips.length < 1) return [];
+    if (foundTrips.length < 1) return [];
 
-        return foundTrips;
-    }
+    return foundTrips;
+  }
 }
 
 const tripService = new TripService();

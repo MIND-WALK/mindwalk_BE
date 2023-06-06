@@ -5,8 +5,13 @@ class UserModel {
   User = model("User", UserSchema);
 
   async create(userInfo) {
-    const user = await this.User.create(userInfo);
-    return user;
+    const aleady = await this.User.findOne({ id: userInfo.id });
+    if (!aleady) {
+      const user = await this.User.create(userInfo);
+      return user;
+    } else {
+      return aleady;
+    }
   }
 
   async findById(id) {

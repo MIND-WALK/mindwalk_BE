@@ -15,6 +15,12 @@ class LogService {
     return updatedLog;
   }
 
+  async deleteLog(userId, ms) {
+    const deleteLog = await this.logModel.delete(userId, ms);
+
+    return deleteLog;
+  }
+
   async findLogsByUserId(userId) {
     const foundLogArray = await this.logModel.findAllByUserId(userId);
 
@@ -23,12 +29,11 @@ class LogService {
     return foundLogArray;
   }
 
-  async findLog(logId) {
-    const foundLog = await this.logModel.findOne(logId);
+  async findLog(logId, ms) {
+    const foundLog = await this.logModel.findOne(logId, ms);
 
-    if (!foundLog) throw new Error("해당 게시글을 찾을 수 없습니다.");
-
-    return foundLog;
+    if (!foundLog) return [];
+    else return foundLog;
   }
 }
 

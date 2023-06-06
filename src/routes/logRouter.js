@@ -4,7 +4,6 @@ import { logService } from "../services/index.js";
 const logRouter = Router();
 
 logRouter.post("/log/:userId", async (req, res, next) => {
-  // res.header("Access-Control-Allow-origin", "*");
   try {
     const { userId } = req.params;
 
@@ -22,7 +21,6 @@ logRouter.post("/log/update/:userId/:ms", async (req, res, next) => {
 });
 
 logRouter.get("/log/all/:userId", async (req, res, next) => {
-  // res.header("Access-Control-Allow-origin", "*");
   try {
     const { userId } = req.params;
 
@@ -34,12 +32,21 @@ logRouter.get("/log/all/:userId", async (req, res, next) => {
   }
 });
 
-logRouter.get("/log/:logId", async (req, res, next) => {
-  // res.header("Access-Control-Allow-origin", "*");
+logRouter.get("/log/:logId/:date", async (req, res, next) => {
   try {
-    const { logId } = req.params;
+    const { logId, date } = req.params;
 
-    const log = await logService.findLog(logId);
+    const log = await logService.findLog(logId, date);
+
+    res.status(200).send(log);
+  } catch (err) {
+    next(err);
+  }
+});
+
+logRouter.delete("/log/delete", async (req, res, next) => {
+  try {
+    const log = await logService.deleteLog(req.body.author, req.body.date);
 
     res.status(200).send(log);
   } catch (err) {

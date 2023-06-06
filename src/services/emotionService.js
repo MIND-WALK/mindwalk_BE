@@ -1,21 +1,21 @@
 import { EmotionModel } from "../db/index.js";
 
 class EmotionService {
-    emotionModel = new EmotionModel();
+  emotionModel = new EmotionModel();
 
-    async createEmotion(emotionInfo) {
-        const createEmotion = await this.emotionModel.createEmotion(emotionInfo);
+  async createEmotion(emotionInfo) {
+    const createEmotion = await this.emotionModel.createEmotion(emotionInfo);
 
-        return createEmotion;
-    }
+    return createEmotion;
+  }
 
-    async findEmotionsByUserId(userId) {
-        const foundEmotionArray = await this.emotionModel.findAllByUserId(userId);
+  async findEmotionsByUserId(userId) {
+    const foundEmotionArray = await this.emotionModel.findAllByUserId(userId);
 
-        if (foundLogArray.length < 1) return [];
+    if (foundEmotionArray.length < 1) return [];
 
-        return foundEmotionArray;
-    }
+    return foundEmotionArray;
+  }
 }
 
 const emotionService = new EmotionService();

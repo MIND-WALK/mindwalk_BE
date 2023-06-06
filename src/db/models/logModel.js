@@ -25,6 +25,12 @@ class LogModel {
 
     return log;
   }
+
+  async delete(userId, ms) {
+    const log = await this.Log.deleteOne({ author: userId, date: ms });
+
+    return log;
+  }
 }
 
 export default LogModel;
