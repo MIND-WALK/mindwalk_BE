@@ -7,14 +7,17 @@ challengeRouter.post("/user/challenge/:userId", async (req, res, next) => {
   try {
     const { userId } = req.params;
 
-    const { name, img, check, date } = req.body;
+    const { name, img, check, date, distance, emotion, emotionTime } = req.body;
 
     await challengeService.createChallenge({
-      name: { name },
-      img: { location },
-      check: { check },
+      name: name,
+      img: img,
+      check: check,
       user: userId,
-      date,
+      date: date,
+      distance: distance,
+      emotion: emotion,
+      emotionTime: emotionTime,
     });
     res.status(201).end();
   } catch (err) {

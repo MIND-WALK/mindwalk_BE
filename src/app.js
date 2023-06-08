@@ -1,12 +1,12 @@
 import express from "express";
 import bodyParser from "body-parser";
-import cors from "cors";
 import {
   logRouter,
   userRouter,
   emotionRouter,
   routeRouter,
   challengeRouter,
+  tripRouter,
 } from "./routes/index.js";
 
 const app = express();
@@ -21,6 +21,7 @@ app.use("/api", logRouter);
 app.use("/api", challengeRouter);
 app.use("/api", emotionRouter);
 app.use("/api", routeRouter);
+app.use("/api", tripRouter);
 
 // eslint-disable-next-line prettier/prettier
 export default app;
